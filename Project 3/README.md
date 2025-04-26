@@ -82,9 +82,9 @@ The objective is to identify key factors influencing unemployment and evaluate t
 
 | Model | Key Metric | Score |
 |:---|:---|:---|
-| Random Forest Regression | RMSE | *[Result based on evaluation]* |
-| Random Forest Regression | R² Score | *[Result based on evaluation]* |
-| Random Forest Classification | Accuracy | *[Result based on evaluation]* |
+| Random Forest Regression | RMSE | 0.20 |
+| Random Forest Regression | R² Score | *1.0* |
+| Random Forest Classification | Accuracy | *0.97* |
 
 > *(Note: Fill in the evaluation scores after running your models.)*
 
@@ -131,6 +131,3 @@ The objective is to identify key factors influencing unemployment and evaluate t
 > ✨ Feel free to fork the repository, contribute, or suggest improvements!
 
 
----
-
-> ✨ Feel free to contribute or suggest improvements for the project!

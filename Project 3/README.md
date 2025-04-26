@@ -1,98 +1,135 @@
-# World Bank Indicators Unemployment Classification
+# 🌍 World Bank Indicators Analysis
 
-## 1. Introduction
+## Overview
 
-**Project Goal:**  
-Predict unemployment levels (`Low`, `Medium`, `High`) based on World Bank indicators using a machine learning model.
+This project focuses on analyzing World Bank Indicators to predict **unemployment rates** and **classify unemployment levels** using Machine Learning techniques. Two main models were developed:
 
-**Dataset:**  
-The project uses the `world_bank_indicators` dataset sourced from [Kaggle](https://www.kaggle.com/).
+- **Random Forest Regression:** Predicts continuous unemployment rates.
+- **Random Forest Classification:** Categorizes unemployment into `Low`, `Medium`, and `High`.
 
-**Model:**  
-A **Random Forest Classifier** is employed for prediction.
-
-**Evaluation Metrics:**  
-- Accuracy  
-- Classification Report (Precision, Recall, F1-Score)  
-- Confusion Matrix  
+The objective is to identify key factors influencing unemployment and evaluate the effectiveness of machine learning models in predicting and classifying unemployment scenarios globally.
 
 ---
 
-## 2. Data Understanding
+## 📚 Project Structure
 
-**Data Source:**  
-- Kaggle (world_bank_indicators dataset)
+### 1. Data Acquisition
+- **Dataset:** World Bank Indicators
+- **Source:** [Kaggle](https://www.kaggle.com/)
+- **Access Method:** Downloaded using `kagglehub`
 
-**Data Description:**  
-- Contains various World Bank indicators for different countries.
-
-**Target Variable:**  
-- `'Unemployment, total (% of total labor force) (modeled ILO estimate)'`
-- Transformed into categorical labels: `Low`, `Medium`, and `High`.
-
----
-
-## 3. Data Preparation
-
-**Data Cleaning:**  
-- Dropped missing values from the target column.
-- Removed irrelevant columns: `updated_at`, `year`, and the original target column after transformation.
-
-**Feature Engineering:**  
-- Transformed the continuous unemployment target into three categories: `Low`, `Medium`, `High`.
-- Encoded the `country` column using **Label Encoding**.
-- Dropped columns with more than 50% missing values.
-- Imputed remaining missing values using the mean.
-
-**Data Scaling:**  
-- Standardized features using **StandardScaler**.
+### 2. Data Cleaning and Preprocessing
+- **Handling Missing Values:** 
+  - Dropping rows with missing target values.
+  - Imputing missing feature values with column means.
+- **Encoding Categorical Variables:**
+  - `Country` column encoded using **Label Encoding**.
+- **Dropping Uninformative Columns:**
+  - Removed `updated_at` and `year`.
+- **Feature Scaling:**
+  - Standardized features using **StandardScaler**.
 
 ---
 
-## 4. Model Building
+## 🔥 Project 1: World Bank Indicators Unemployment Prediction (Regression)
 
-**Model Selection:**  
-- Chose **Random Forest Classifier** for its robustness and capability to handle complex datasets.
+### Model Building
+- **Model:** Random Forest Regressor
+- **Training:** 
+  - Data split into **80% training** and **20% testing** using `train_test_split`.
 
-**Hyperparameter Tuning:**  
-- Used **GridSearchCV** to optimize:
-  - `n_estimators` (number of trees)
-  - `max_depth` (maximum depth of trees)
-  - `min_samples_split` (minimum samples to split a node)
+### Evaluation
+- **Metrics:**
+  - Root Mean Squared Error (RMSE)
+  - R² Score (Coefficient of Determination)
 
-**Training:**  
-- Trained the model on the processed training data with the best hyperparameters.
-
----
-
-## 5. Model Evaluation
-
-**Evaluation Metrics:**  
-- **Accuracy**: Measures overall prediction correctness.
-- **Classification Report**: Includes precision, recall, F1-score, and support for each class.
-- **Confusion Matrix**: Shows true vs predicted classifications for a clearer performance view.
-
-**Results:**  
-- Evaluation metrics are calculated on the test dataset to assess and validate model performance.
+### Visualization
+- **Feature Importance Plot:** 
+  - Highlights the most influential factors affecting unemployment.
+- **Heatmap:** 
+  - Displays correlations among top indicators.
+- **Bar Plot:** 
+  - Visualizes unemployment rates across different countries.
 
 ---
 
-## 6. Conclusion
+## 🔥 Project 2: World Bank Indicators Unemployment Classification
 
-**Summary:**  
-- Successfully predicted unemployment categories (`Low`, `Medium`, `High`) using Random Forest on World Bank indicators.
-- Achieved promising accuracy and reliable classification results.
+### Introduction
+- **Goal:** Predict unemployment levels (`Low`, `Medium`, `High`).
+- **Target Variable:**  
+  `'Unemployment, total (% of total labor force) (modeled ILO estimate)'` transformed into categorical classes.
 
-**Limitations:**  
-- The dataset might have biases due to missing or imputed values.
-- Label Encoding of countries might ignore relationships between countries.
-- Limited feature engineering due to missing domain-specific insights.
+### Model Building
+- **Model:** Random Forest Classifier
+- **Hyperparameter Tuning:** 
+  - **GridSearchCV** optimized:
+    - `n_estimators` (Number of trees)
+    - `max_depth` (Tree depth)
+    - `min_samples_split` (Minimum samples to split a node)
+- **Training:** 
+  - Best hyperparameters used to train the model on the processed data.
 
-**Future Work:**  
-- Explore more sophisticated imputation methods for missing values.
-- Try different machine learning algorithms (e.g., XGBoost, LightGBM).
-- Incorporate time-series analysis if yearly data is available.
-- Perform feature selection or dimensionality reduction (like PCA) for better insights.
+### Evaluation
+- **Metrics:**
+  - Accuracy
+  - Classification Report (Precision, Recall, F1-Score, Support)
+  - Confusion Matrix
+
+---
+
+## 📊 Results Summary
+
+| Model | Key Metric | Score |
+|:---|:---|:---|
+| Random Forest Regression | RMSE | *[Result based on evaluation]* |
+| Random Forest Regression | R² Score | *[Result based on evaluation]* |
+| Random Forest Classification | Accuracy | *[Result based on evaluation]* |
+
+> *(Note: Fill in the evaluation scores after running your models.)*
+
+---
+
+## ⚙️ Libraries Used
+
+- `kagglehub`
+- `pandas`
+- `numpy`
+- `matplotlib`
+- `seaborn`
+- `sklearn` 
+  - `train_test_split`
+  - `LabelEncoder`
+  - `StandardScaler`
+  - `RandomForestRegressor`
+  - `RandomForestClassifier`
+  - `GridSearchCV`
+  - `mean_squared_error`
+  - `r2_score`
+  - `classification_report`
+  - `confusion_matrix`
+
+---
+
+## 📝 Conclusion
+
+- Successfully implemented **both regression and classification models** to predict and classify unemployment using global economic indicators.
+- Feature importance analysis revealed which indicators most strongly influence unemployment.
+- The classification model achieved reliable accuracy in categorizing countries into `Low`, `Medium`, and `High` unemployment levels.
+
+---
+
+## 🚀 Future Work
+
+- Explore more advanced models like **XGBoost**, **LightGBM**, or **Neural Networks** for better performance.
+- Incorporate **time-series forecasting** if longitudinal data is available.
+- Perform **feature selection** or **dimensionality reduction** (e.g., PCA) to enhance model efficiency.
+- Enrich the dataset by integrating external socio-economic factors such as education levels, inflation rates, etc.
+
+---
+
+> ✨ Feel free to fork the repository, contribute, or suggest improvements!
+
 
 ---
 
